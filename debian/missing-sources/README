@@ -1,0 +1,98 @@
+Missing source files
+--------------------
+
+WordPress ships a tar.gz ready to use that embeds many minified javascript
+libraries as well as several compiled Flash files. The GPL requires you
+to provide the corresponding source code. WordPress complies to this
+through the page at http://wordpress.org/download/source/.
+
+For Debian this is not really acceptable so instead we bundle all the
+missing source files in this directory. They have been grabbed from the
+above page (when it was up-to-date) or directly from the various upstream
+projects.
+
+Last synchronization was made with SVN revision 304 of
+http://code.trac.wordpress.org/browser/wordpress-sources
+
+Files: wp-admin/js/iris.min.js
+Project: Iris v1.0.4
+Source: https://raw.githubusercontent.com/Automattic/Iris/1.0.4/dist/iris.js
+
+Files: wp-includes/js/crop/cropper.js
+Project: Cropper-UI 1.2.0
+Comment: The minified file has been patched in changeset 4768 so it's
+ really its own source in truth.
+ http://core.trac.wordpress.org/changeset/4768/trunk/wp-includes/js/crop/cropper.js
+URL: http://www.defusion.org.uk/downloads/code/jsCropperUI-1.2.0.tar.gz
+Source: jsCropperUI-1.2.0.tar.gz
+
+Files: wp-includes/js/swfupload/swfupload.swf
+Project: SWFUpload 2.2.0
+URL: http://code.svn.wordpress.org/wordpress-sources/swfupload/swfupload-2.2.0.1/
+Source: swfupload-2.2.0.1
+
+Files: wp-includes/js/swfobject.js
+Project: SWFObject 2.2
+URL: http://code.svn.wordpress.org/wordpress-sources/swfobject/swfobject-2.2-r402.js
+Source: swfobject-2.2-r402.js
+
+Files: wp-includes/js/jquery/jquery.js
+Project: jQuery 1.10.2
+URL: http://code.svn.wordpress.org/wordpress-sources/jquery/jquery-1.10.2.js
+Source: jquery-1.10.2.js
+
+Files: wp-includes/js/jquery/jquery.color.min.js
+Project: jQuery Color Animations v2.1.1
+URL: http://code.svn.wordpress.org/wordpress-sources/jquery-plugins/jquery.color-2.1.1.js
+Source: jquery.color.js
+
+Files: wp-includes/js/jquery/jquery.query.js
+Project: jQuery.jquery 2.1.7
+URL: http://code.svn.wordpress.org/wordpress-sources/jquery-plugins/jquery.query.js
+Source: jquery.query.js
+
+Files: wp-includes/js/jquery/jquery.schedule.js
+URL: http://code.svn.wordpress.org/wordpress-sources/jquery-plugins/jquery.schedule.js
+Source: jquery.schedule.js
+
+Files: wp-includes/js/jquery/jquery.masonry.min.js
+URL: http://code.svn.wordpress.org/wordpress-sources/jquery-plugins/jquery.masonry-2.1.05.js
+Source: jquery.masonry.js
+
+Files: wp-includes/js/jquery/jquery.ui.touch-punch.js
+URL: http://code.svn.wordpress.org/wordpress-sources/jquery-plugins/jquery.ui.touch-punch.js
+Source: jquery.ui.touch-punch.js
+
+Files: wp-includes/js/jquery/ui/*.js
+Project: jQuery UI 1.10.3
+URL: http://code.svn.wordpress.org/wordpress-sources/jquery-ui/1.10.3/
+Source: jquery-ui-1.10.3
+
+Files: wp-includes/js/plupload/*
+Project: plupload 1.5.7
+URL: http://code.svn.wordpress.org/wordpress-sources/plupload/1.5.7/
+Source: plupload-1.5.7
+
+Files: wp-includes/js/tinymce/*
+Project: TinyMCE 4.3.10
+URL: https://github.com/tinymce/tinymce/archive/4.3.10.tar.gz
+Source: tinymce-4.3.10.tar.gz
+
+Files: wp-includes/js/backbone.min.js
+Project: Backbone.js 1.0
+URL: http://code.svn.wordpress.org/wordpress-sources/backbone/backbone-1.0.js
+Source: backbone-1.0.js
+
+Files: wp-includes/js/underscore.min.js
+Project: Underscore.js 1.4.4
+URL: http://code.svn.wordpress.org/wordpress-sources/backbone/underscore-1.4.4.js
+Source: underscore-1.4.4.js
+
+File: wp-admin/js/revisions-js.php
+URL: http://wordpress.org/download/source/revisions-js-dev.php.txt
+Source: revisions-js-dev.php
+
+File: wp-includes/js/mediaelement/flashmediaelement.swf
+Project: mediaelement 2.13.0
+URL: https://github.com/johndyer/mediaelement/tree/2.13.0
+Source: mediaelement-2.13.0/*

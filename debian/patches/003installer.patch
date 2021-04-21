@@ -1,0 +1,16 @@
+Description: Patching install.php to permit a valid upload path
+Author: <andrea.de.iacovo@gmail.com>
+Reviewed-by: Craig Small <csmall@debian.org>
+Last-Update: 2017-04-21
+--- a/wp-admin/install.php
++++ b/wp-admin/install.php
+@@ -369,6 +369,9 @@
+ 		if ( $error === false ) {
+ 			$wpdb->show_errors();
+ 			$result = wp_install( $weblog_title, $user_name, $admin_email, $public, '', wp_slash( $admin_password ), $loaded_language );
++			// Setup upload directories for Debian #430781
++			$wpdb->query("UPDATE $wpdb->options set option_value = '$upload_path' where option_name = 'upload_path'");
++			$wpdb->query("UPDATE $wpdb->options set option_value = '$upload_url_path' where option_name = 'upload_url_path'");
+ ?>
+ 
+ <h1><?php _e( 'Success!' ); ?></h1>

@@ -1,0 +1,3 @@
+debian/languages/*.mo
+debian/languages/*/*.mo
+debian/wp-setup.1

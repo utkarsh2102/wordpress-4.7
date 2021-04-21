@@ -1,0 +1,22 @@
+Origin: https://core.trac.wordpress.org/changeset/47984
+Reviewed-by: Sylvain Beucler <beuc@debian.org>
+Last-Update: 2020-09-09
+
+Index: wordpress-4.7.18/wp-includes/comment-template.php
+===================================================================
+--- wordpress-4.7.18.orig/wp-includes/comment-template.php
++++ wordpress-4.7.18/wp-includes/comment-template.php
+@@ -584,7 +584,12 @@ function comment_date( $d = '', $comment
+  */
+ function get_comment_excerpt( $comment_ID = 0 ) {
+ 	$comment = get_comment( $comment_ID );
+-	$comment_text = strip_tags( str_replace( array( "\n", "\r" ), ' ', $comment->comment_content ) );
++
++	if ( ! post_password_required( $comment->comment_post_ID ) ) {
++		$comment_text = strip_tags( str_replace( array( "\n", "\r" ), ' ', $comment->comment_content ) );
++	} else {
++		$comment_text = __( 'Password protected' );
++	}
+ 	$words = explode( ' ', $comment_text );
+ 
+ 	/**

@@ -1,0 +1,36 @@
+#!/usr/bin/make -f
+
+# The following is a list of the non-free files that Wordpress
+# ships in their archive that we will strip in get-orig-source.
+UPSTREAM_FILE_BLACKLIST=wp-content/plugins/hello.php wp-includes/js/tinymce/plugins/media/moxieplayer.swf
+
+WP_CONTENT = debian/wordpress/var/lib/wordpress/wp-content
+
+%:
+	dh $@ --with linktree
+
+override_dh_auto_build:
+	set -e; for i in $$(find debian/languages/ -name *.po); do \
+		msgfmt $$i -o $${i%%.po}.mo; \
+        done
+	pod2man --utf8 --center wp-setup debian/wp-setup debian/wp-setup.1
+
+override_dh_install:
+	dh_install -Xlicense.txt -Xlicense.commercial.txt -XLICENSE -XCOPYING
+
+override_dh_fixperms:
+	dh_fixperms
+	chown -R www-data:www-data $(WP_CONTENT)
+
+# Use like this: debian/rules get-orig-source VERSION=3.4
+get-orig-source:
+	@test -n "$(VERSION)" || (echo "Please set VERSION on the command-line. Ex: debian/rules get-orig-source VERSION=3.4" >&2; exit 1)
+	@test ! -e ../wordpress_$(VERSION)+dfsg.orig.tar.xz || (echo "You already have ../wordpress_$(VERSION)+dfsg.orig.tar.xz" >&2; exit 1)
+	uscan --noconf --verbose --force-download --rename --download-version $(VERSION) --destdir=.
+	tar --transform "s,^.[^/]*,wordpress-$(VERSION)/," -xJvf \
+		./wordpress_$(VERSION).orig.tar.xz
+	rm ./wordpress_$(VERSION).orig.tar.xz
+	cd wordpress-$(VERSION) && rm $(UPSTREAM_FILE_BLACKLIST)
+	tar -acvf ../wordpress_$(VERSION)+dfsg.orig.tar.xz wordpress-$(VERSION)
+	rm -rf wordpress-$(VERSION)
+	@echo "Successfully created ../wordpress_$(VERSION)+dfsg.orig.tar.xz"

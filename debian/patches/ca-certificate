@@ -1,0 +1,18 @@
+Author: Craig Small <csmall@debian.org>
+Description: Use system CA file
+ Instead of the shipped CA file use the system one found in the
+ Debian ca-certificates package.
+Bug-Debian: http://bugs.debian.org/748965
+Reviewed-by: Craig Small <csmall@debian.org>
+Last-Update: 2016-12-07
+--- a/wp-includes/class-http.php
++++ b/wp-includes/class-http.php
+@@ -198,7 +198,7 @@
+ 			'compress' => false,
+ 			'decompress' => true,
+ 			'sslverify' => true,
+-			'sslcertificates' => ABSPATH . WPINC . '/certificates/ca-bundle.crt',
++			'sslcertificates' => '/etc/ssl/certs/ca-certificates.crt',
+ 			'stream' => false,
+ 			'filename' => null,
+ 			'limit_response_size' => null,

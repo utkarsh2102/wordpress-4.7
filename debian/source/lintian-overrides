@@ -1,0 +1,3 @@
+#
+# Lintian is not clever enough to find any files
+wordpress: source-is-missing

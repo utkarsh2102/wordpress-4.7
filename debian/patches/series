@@ -1,0 +1,10 @@
+ca-certificate
+001readme.patch
+003installer.patch
+010disabling_update_note.patch
+#011support-symlinks-for-plugins.patch
+CVE-2017-8295.patch
+CVE-2017-14990.patch
+CVE-2019-17670.patch
+#CVE-2020-4050-regression.patch
+TEMP-0962685-9285F4.patch

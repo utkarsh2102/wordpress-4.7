@@ -1,0 +1,17 @@
+# False positive, this streams.php is not the one of php-gettext
+wordpress: embedded-php-library usr/share/wordpress/wp-includes/pomo/streams.php please use php-php-gettext
+
+# Opportunistic replacement is in place but the Debian version does
+# not match the wordpress version
+wordpress: embedded-javascript-library usr/share/wordpress/wp-includes/js/jquery/jquery.form.js please use libjs-jquery-form
+wordpress: embedded-javascript-library usr/share/wordpress/wp-includes/js/jquery/jquery.form.min.js please use libjs-jquery-form
+wordpress: embedded-javascript-library usr/share/wordpress/wp-includes/js/jquery/jquery.js please use libjs-jquery
+wordpress: embedded-javascript-library usr/share/wordpress/wp-includes/js/tinymce/tiny_mce_popup.js please use tinymce2?
+wordpress: embedded-javascript-library usr/share/wordpress/wp-includes/js/underscore.min.js please use libjs-underscore
+wordpress: embedded-javascript-library usr/share/wordpress/wp-includes/js/swfobject.js
+wordpress: embedded-javascript-library usr/share/wordpress/wp-includes/js/tinymce/tiny_mce.js
+wordpress: embedded-javascript-library usr/share/wordpress/wp-includes/js/tinymce/tiny_mce_popup.js please use tinymce
+
+# Debian version is not compatible (see #669054)
+wordpress: embedded-php-library usr/share/wordpress/wp-includes/class-simplepie.php please use libphp-simplepie
+

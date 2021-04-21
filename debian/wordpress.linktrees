@@ -1,0 +1,57 @@
+# Symlinks to replace embedded libraries
+
+### Javascript
+# Backbone
+deduplicate usr/share/javascript/backbone/backbone.min.js usr/share/wordpress/wp-includes/js/backbone.min.js
+
+# cropper
+replace usr/share/javascript/cropper usr/share/wordpress/wp-includes/js/crop
+
+# getid3
+replace usr/share/php/getid3 usr/share/wordpress/wp-includes/ID3
+
+# Jquery
+# This one will never work as long a WP includes the jQuery.noConflict at
+# the end, see http://core.trac.wordpress.org/ticket/16494 for a somewhat
+# related discussion
+deduplicate usr/share/javascript/jquery/jquery.min.js usr/share/wordpress/wp-includes/js/jquery/jquery.js
+
+# Jquery-form
+deduplicate usr/share/javascript/jquery-form usr/share/wordpress/wp-includes/js/jquery
+
+# Jquery UI
+# The debian package does not provide the required *.min.js files so we
+# can't deduplicate them (see #677619 for a wishlist bug about this)
+deduplicate usr/share/javascript/jquery-ui/ui usr/share/wordpress/wp-includes/js/jquery/ui
+
+# mediaelement - too old 2.18.2 versus 2.15.1
+#replace usr/share/javascript/mediaelement usr/share/wordpress/wp-includes/js/mediaelement
+
+# Prototype
+replace usr/share/javascript/prototype/prototype.js usr/share/wordpress/wp-includes/js/prototype.js
+
+# Scriptaculous
+replace usr/share/javascript/scriptaculous usr/share/wordpress/wp-includes/js/scriptaculous
+
+# swfobject
+deduplicate usr/share/javascript/swfobject/swfobject.js usr/share/wordpress/wp-includes/js/swfobject.js
+
+# TinyMCE
+deduplicate usr/share/tinymce/www usr/share/wordpress/wp-includes/js/tinymce
+
+# Underscore
+deduplicate usr/share/javascript/underscore/underscore.min.js usr/share/wordpress/wp-includes/js/underscore.min.js
+
+### PHP
+#
+# PHPmailer
+replace usr/share/php/libphp-phpmailer/class.phpmailer.php usr/share/wordpress/wp-includes/class-phpmailer.php
+replace usr/share/php/libphp-phpmailer/class.smtp.php usr/share/wordpress/wp-includes/class-smtp.php
+
+# Simplepie
+# Use the embedded copy until #669054 is resolved
+# replace usr/share/php/simplepie/simplepie.inc usr/share/wordpress/wp-includes/class-simplepie.php
+
+# Snoopy
+# wordpress version is prefixed with deprecated
+#replace usr/share/php/libphp-snoopy/Snoopy.class.php usr/share/wordpress/wp-includes/class-snoopy.php

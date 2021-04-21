@@ -1,0 +1,14 @@
+debian/missing-sources/jsCropperUI-1.2.0.tar.gz
+debian/missing-sources/swfupload/Flash/swfupload.swf
+debian/missing-sources/plupload/javascript/jquery.plupload.queue/img/backgrounds.gif
+debian/missing-sources/plupload/javascript/jquery.plupload.queue/img/buttons-disabled.png
+debian/missing-sources/plupload/javascript/jquery.plupload.queue/img/buttons.png
+debian/missing-sources/plupload/javascript/jquery.plupload.queue/img/delete.gif
+debian/missing-sources/plupload/javascript/jquery.plupload.queue/img/done.gif
+debian/missing-sources/plupload/javascript/jquery.plupload.queue/img/error.gif
+debian/missing-sources/plupload/javascript/jquery.plupload.queue/img/throbber.gif
+debian/missing-sources/plupload/javascript/jquery.plupload.queue/img/transp50.png
+debian/missing-sources/plupload/javascript/jquery.ui.plupload/img/plupload-bw.png
+debian/missing-sources/plupload/javascript/jquery.ui.plupload/img/plupload.png
+debian/missing-sources/mediaelement/src/FlashMediaElement.fla
+debian/missing-sources/tinymce-4.3.10.tar.gz

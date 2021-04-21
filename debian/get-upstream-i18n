@@ -1,0 +1,92 @@
+#! /bin/sh
+
+set -e
+
+LANG=C
+svndir="$1"
+usage () {
+    printf "Usage: %s [svndir]\n" "$0"
+}
+
+if ! [ -d debian ]; then
+    printf "Cannot find debian directory\n" 1>&2
+    exit 2
+fi
+
+CURVERSION=$(dpkg-parsechangelog | sed -n -e "s/^Version: //p")
+I18NFILES="
+@LANG@.po
+admin-@LANG@.po
+admin-network-@LANG@.po
+continents-cities-@LANG@.po
+twentyfifteen/@LANG@.po
+twentysixteen/@LANG@.po
+twentyseventeen/@LANG@.po
+"
+
+find_latest_version() {
+    local dir="$1"
+    local latest=""
+    while [ $# -gt 0 ] && shift; do
+	if dpkg --compare-versions "$1" gt "$CURVERSION"; then
+	    continue
+	fi
+	if [ ! -d $dir/$1/messages ]; then
+	    continue
+	fi
+	pofiles=$(cd "$dir/$1/messages"; ls *.po 2>/dev/null) || true
+	if [ -z "$pofiles" ]; then
+	    continue # Skip dir without po files
+	fi
+	if dpkg --compare-versions "$latest" lt "$1"; then
+	    latest="$1"
+	fi
+    done
+    echo $latest
+}
+
+do_install() {
+    local srcdir="$1"
+    local lang="$2"
+    for f in $I18NFILES; do
+	f=$(echo "$f" | sed -e "s/@LANG@/$lang/")
+	if [ -e "$srcdir/$f" ]; then
+	    echo -n "$f "
+	    cp "$srcdir/$f" debian/languages/$f
+	fi
+    done
+}
+
+#UPSTREAM_I18N_SVN=http://svn.automattic.com/wordpress-i18n
+UPSTREAM_I18N_SVN=http://i18n.svn.wordpress.org/
+BASEDIR="${PWD}"
+
+if [ -d "$svndir" ]; then
+    (cd $svndir; svn update --ignore-externals)
+else
+    tmpcodir=$(mktemp -d -t get-upstream-i18n.XXXXXX)
+    (cd $tmpcodir; svn co --ignore-externals $UPSTREAM_I18N_SVN svn)
+    svndir="$tmpcodir/svn"
+fi
+
+LANGS=$(cd $svndir; ls | egrep -v "^(theme|tools|COPYING|pot)")
+
+for f in $I18NFILES; do
+    mkdir -p debian/languages/$(dirname $f)
+done
+
+for lang in $LANGS; do
+    [ -d "$svndir/$lang/tags" ] || continue
+    allver=$(cd "$svndir/$lang/tags"; ls | egrep "^[0-9]" || true)
+    [ -n "$allver" ] || continue
+    latest=$(find_latest_version "$svndir/$lang/tags" $allver)
+    if [ ! -n "$latest" ]; then
+	echo "No suitable version found for $lang, skipping."
+	continue
+    fi
+    echo -n "Updating i18n files for $lang from $latest: "
+    do_install "$svndir/$lang/tags/$latest/messages/" "$lang"
+    echo ""
+done
+
+[ -z "$tmpcodir" ] || rm -rf "$tmpcodir"
