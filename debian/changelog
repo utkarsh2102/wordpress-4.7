@@ -1,3 +1,15 @@
+wordpress (4.7.22+dfsg-0+deb9u1) stretch-security; urgency=high
+
+  * Non-maintainer upload by the LTS team.
+  * New upstream version 4.7.22+dfsg. (Closes: #1003243)
+    - CVE-2022-21662 - Stored XSS through authenticated users.
+    - CVE-2022-21663 - Authenticated Object Injection in Multisites.
+    - CVE-2022-21661 - WordPress: SQL Injection through WP_Query.
+    - CVE-2022-21664 - SQL injection due to improper sanitization
+                       in WP_Meta_Query.
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Sun, 16 Jan 2022 22:24:46 +0530
+
 wordpress (4.7.21+dfsg-0+deb9u1) stretch-security; urgency=high
 
   * Non-maintainer upload by the LTS team.
