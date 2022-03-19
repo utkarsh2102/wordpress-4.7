@@ -1,3 +1,11 @@
+wordpress (4.7.23+dfsg-0+deb9u1) stretch-security; urgency=high
+
+  * Non-maintainer upload by the LTS team.
+  * New upstream version 4.7.23+dfsg. (Closes: #1007145)
+    - CVE references will be added later. \o/
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Sat, 19 Mar 2022 22:14:06 +0530
+
 wordpress (4.7.22+dfsg-0+deb9u1) stretch-security; urgency=high
 
   * Non-maintainer upload by the LTS team.
